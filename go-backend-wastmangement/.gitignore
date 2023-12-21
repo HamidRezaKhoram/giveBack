@@ -1,0 +1,12 @@
+# Binaries
+/bin/
+
+# Dependency directories
+/vendor/
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Environment files
+.env
