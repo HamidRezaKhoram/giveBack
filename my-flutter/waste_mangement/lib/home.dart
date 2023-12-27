@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waste_mangement/cards/cards_home.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -15,19 +16,19 @@ class _MyHomePageState extends State<MyHomePage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Index 0: Home',
+      'Home',
       style: optionStyle,
     ),
     Text(
-      'Index 1: Business',
+      'Business',
       style: optionStyle,
     ),
     Text(
-      'Index 2: School',
+      'School',
       style: optionStyle,
     ),
     Text(
-      'Index 3: Account',
+      'Account',
       style: optionStyle,
     ),
   ];
@@ -38,13 +39,44 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  var myList = ["afdkashfhkadsjdfdfhla", "b", "c","d","j","k","l","m","n","o","p"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
-      ),
+      appBar: AppBar(title: _widgetOptions.elementAt(_selectedIndex)),
+      body: ListView(children: <Widget>[
+        // _widgetOptions.elementAt(_selectedIndex),
+        GridView.count(
+          mainAxisSpacing: 1.0,
+          shrinkWrap: true,
+          crossAxisCount: 2,
+          children: List.generate(myList.length-7, (index) {
+            return CardsHome(
+              title: myList[index],
+              subtitle: myList[index],
+            );
+          }),
+        ),
+        // SizedBox(
+        //   height: 200.0,
+        //   width: 300.0,
+        //   child: ListView.builder(
+        //     scrollDirection: Axis.vertical,
+        //     itemCount: myList.length,
+        //     itemBuilder: (context, index) {
+        //       return CardsHome(
+        //         title: myList[index],
+        //         subtitle: myList[index],
+        //       );
+        //     },
+        //   ),
+        // ),
+        ...myList.map((e) => CardsHome(
+              title: e,
+              subtitle: e,
+            ))
+      ]),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,

@@ -82,11 +82,11 @@ class _FormWidgetState extends State<FormWidget> {
       // Call sign up method from AuthController
       final authController = AuthController();
       await authController.signUp(
-        _emailController.text,
-        _passwordController.text,
-        () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const MyHomePage(title: 'Home'))));
-               // Replace '/home' with your home route
-      
+          _emailController.text,
+          _passwordController.text,
+          () => Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (_) => const MyHomePage(title: 'Home'))));
+      // Replace '/home' with your home route
     } else {
       // Call login method (not implemented in this snippet)
     }

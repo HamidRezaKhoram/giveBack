@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'home.dart'; // Replace with the path to your home screen file
 
 class OnboardingScreen extends StatefulWidget {
   final VoidCallback onBoardingComplete;
 
-  OnboardingScreen({Key? key, required this.onBoardingComplete}) : super(key: key);
+  const OnboardingScreen({Key? key, required this.onBoardingComplete})
+      : super(key: key);
 
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
@@ -42,10 +41,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: List<Widget>.generate(3, (int index) {
                 return AnimatedContainer(
-                  duration: Duration(milliseconds: 300),
+                  duration: const Duration(milliseconds: 300),
                   height: 10,
                   width: (index == _currentPage) ? 30 : 10,
-                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: (index == _currentPage) ? Colors.blue : Colors.grey,
@@ -56,10 +55,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           )
         ],
       ),
-         floatingActionButton: _currentPage == 2
+      floatingActionButton: _currentPage == 2
           ? FloatingActionButton(
               onPressed: () {
-                widget.onBoardingComplete(); // Call the passed callback function
+                widget
+                    .onBoardingComplete(); // Call the passed callback function
               },
               child: const Icon(Icons.arrow_forward),
             )
